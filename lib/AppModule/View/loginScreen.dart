@@ -5,7 +5,6 @@ import 'package:stchealth/AppModule/View/bottomNavigationBar.dart';
 import 'package:stchealth/AppModule/customWidgets/customButton.dart';
 import 'package:stchealth/AppModule/customWidgets/customToast.dart';
 import 'package:stchealth/AppModule/customWidgets/myText.dart';
-
 import '../Controller/AllController.dart';
 import '../customWidgets/customTexField.dart';
 
@@ -16,14 +15,6 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-bool readOnly = true;
-String? _email;
-bool _isValid = false;
-var _formKey = GlobalKey<FormState>();
-var controller = Get.put(AllController());
-
-var emailcontroller = TextEditingController();
-var passwordcontroller = TextEditingController();
 
 class _LoginScreenState extends State<LoginScreen> {
   String? _emailValidator(String? value) {
@@ -32,6 +23,15 @@ class _LoginScreenState extends State<LoginScreen> {
     }
     return null;
   }
+
+  bool readOnly = true;
+  String? _email;
+  bool _isValid = false;
+  var _formKey = GlobalKey<FormState>();
+  var controller = Get.put(AllController());
+
+  var emailcontroller = TextEditingController();
+  var passwordcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -47,14 +47,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 // color: Colors.red,
                 padding: EdgeInsets.all(20.sp),
                 decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Color(0xff188095),
-                      Color(0xff2AB3C6),
-                    ], // Define your gradient colors
-                    begin: Alignment.topLeft, // Starting point of the gradient
-                    end: Alignment.bottomRight, // Ending point of the gradient
-                  ),
+                  gradient: LinearGradient(colors: [
+                    Color(0xff188095),
+                    Color(0xff2AB3C6),
+                  ], begin: Alignment.topLeft, end: Alignment.bottomRight),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Center(
                       child: myText(
-                          text: "STC\n health".toUpperCase(),
+                          text: "STC\nhealth".toUpperCase(),
                           fontweight: FontWeight.w400,
                           size: 22.sp,
                           color: Colors.white),
@@ -103,7 +99,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           if (value == null || value.isEmpty) {
                             return 'Please enter an password';
                           }
-
                           return null;
                         },
                         obscure: readOnly,
